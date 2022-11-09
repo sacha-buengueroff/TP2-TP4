@@ -1,0 +1,240 @@
+
+D:\Sacha\ORT\TERCER CUATRIMESTRE\Con Sanchez\TP2\TPs\TP2-TP4\base
+
+test> use empresa
+switched to db empresa
+empresa> db.createCollection('clientes')
+{ ok: 1 }
+empresa> db.createCollection('productos')
+{ ok: 1 }
+empresa> db.clientes.insertMany([     {nombre: 'Sacha', apellido: 'Buengueroff', edad: 24, telefono: 1159086732, email: 'sachabuengue@gmail.com'},     {nombre: 'Julian', apellido: 'Perez', edad: 37, telefono: 1159543732, email: 'julianperez@gmail.com'},     {nombre: 'Magali', apellido: 'Elbaum', edad: 51, telefono: 1158256432, email: 'magalielbaum@gmail.com'},     {nombre: 'Pedro', apellido: 'Morlivo', edad: 19, telefono: 1192354682, email: 'pedromorlivo@gmail.com'},
+{nombre: 'Angel', apellido: 'Cabrera', edad: 62, telefono: 1132851698, email: 'angelcabrera@gmail.com'} ])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId("636c27958e8bc155e572685d"),
+    '1': ObjectId("636c27958e8bc155e572685e"),
+    '2': ObjectId("636c27958e8bc155e572685f"),
+    '3': ObjectId("636c27958e8bc155e5726860"),
+    '4': ObjectId("636c27958e8bc155e5726861")
+  }
+}
+empresa> db.productos.insertMany([     {nombre: 'Mesa', descripcion: 'Mesa de 4 patas azul', stock: 10, precio: 15000},     {nombre: 'Silla', descripcion: 'Silla de 4 patas eames', stock: 24, precio: 8000},     {nombre: 'Heladera', descridescripcion: 'Heladera doble puerta marca Whirlpool', stock: 8, precio: 85000},     {nombre: 'Plato', descripcion: 'Plato de ceramica blanco', stock: 55, precio: 1200} ])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId("636c279d8e8bc155e5726862"),
+    '1': ObjectId("636c279d8e8bc155e5726863"),
+    '2': ObjectId("636c279d8e8bc155e5726864"),
+    '3': ObjectId("636c279d8e8bc155e5726865")
+  }
+}
+empresa> show collections
+clientes
+productos
+empresa> db.clientes.find()
+[
+  {
+    _id: ObjectId("636c27958e8bc155e572685d"),
+    nombre: 'Sacha',
+    apellido: 'Buengueroff',
+    edad: 24,
+    telefono: 1159086732,
+    email: 'sachabuengue@gmail.com'
+  },
+  {
+    _id: ObjectId("636c27958e8bc155e572685e"),
+    nombre: 'Julian',
+    apellido: 'Perez',
+    edad: 37,
+    telefono: 1159543732,
+    email: 'julianperez@gmail.com'
+  },
+  {
+    _id: ObjectId("636c27958e8bc155e572685f"),
+    nombre: 'Magali',
+    apellido: 'Elbaum',
+    edad: 51,
+    telefono: 1158256432,
+    email: 'magalielbaum@gmail.com'
+  },
+  {
+    _id: ObjectId("636c27958e8bc155e5726860"),
+    nombre: 'Pedro',
+    apellido: 'Morlivo',
+    edad: 19,
+    telefono: 1192354682,
+    email: 'pedromorlivo@gmail.com'
+  },
+  {
+    _id: ObjectId("636c27958e8bc155e5726861"),
+    nombre: 'Angel',
+    apellido: 'Cabrera',
+    edad: 62,
+    telefono: 1132851698,
+    email: 'angelcabrera@gmail.com'
+  }
+]
+empresa> db.productos.find()
+[
+  {
+    _id: ObjectId("636c279d8e8bc155e5726862"),
+    nombre: 'Mesa',
+    descripcion: 'Mesa de 4 patas azul',
+    stock: 10,
+    precio: 15000
+  },
+  {
+    _id: ObjectId("636c279d8e8bc155e5726863"),
+    nombre: 'Silla',
+    descripcion: 'Silla de 4 patas eames',
+    stock: 24,
+    precio: 8000
+  },
+  {
+    _id: ObjectId("636c279d8e8bc155e5726864"),
+    nombre: 'Heladera',
+    descripcion: 'Heladera doble puerta marca Whirlpool',
+    stock: 8,
+    precio: 85000
+  },
+  {
+    _id: ObjectId("636c279d8e8bc155e5726865"),
+    nombre: 'Plato',
+    descripcion: 'Plato de ceramica blanco',
+    stock: 55,
+    precio: 1200
+  }
+]
+empresa> db.clientes.countDocuments()
+5
+empresa> db.productos.countDocuments()
+4
+empresa> db.clientes.find().sort({edad: 1})
+[
+  {
+    _id: ObjectId("636c27958e8bc155e5726860"),
+    nombre: 'Pedro',
+    apellido: 'Morlivo',
+    edad: 19,
+    telefono: 1192354682,
+    email: 'pedromorlivo@gmail.com'
+  },
+  {
+    _id: ObjectId("636c27958e8bc155e572685d"),
+    nombre: 'Sacha',
+    apellido: 'Buengueroff',
+    edad: 24,
+    telefono: 1159086732,
+    email: 'sachabuengue@gmail.com'
+  },
+  {
+    _id: ObjectId("636c27958e8bc155e572685e"),
+    nombre: 'Julian',
+    apellido: 'Perez',
+    edad: 37,
+    telefono: 1159543732,
+    email: 'julianperez@gmail.com'
+  },
+  {
+    _id: ObjectId("636c27958e8bc155e572685f"),
+    nombre: 'Magali',
+    apellido: 'Elbaum',
+    edad: 51,
+    telefono: 1158256432,
+    email: 'magalielbaum@gmail.com'
+  },
+  {
+    _id: ObjectId("636c27958e8bc155e5726861"),
+    nombre: 'Angel',
+    apellido: 'Cabrera',
+    edad: 62,
+    telefono: 1132851698,
+    email: 'angelcabrera@gmail.com'
+  }
+]
+empresa> db.productos.find().sort({stock: -1})
+[
+  {
+    _id: ObjectId("636c279d8e8bc155e5726865"),
+    nombre: 'Plato',
+    descripcion: 'Plato de ceramica blanco',
+    stock: 55,
+    precio: 1200
+  },
+  {
+    _id: ObjectId("636c279d8e8bc155e5726863"),
+    nombre: 'Silla',
+    descripcion: 'Silla de 4 patas eames',
+    stock: 24,
+    precio: 8000
+  },
+  {
+    _id: ObjectId("636c279d8e8bc155e5726862"),
+    nombre: 'Mesa',
+    descripcion: 'Mesa de 4 patas azul',
+    stock: 10,
+    precio: 15000
+  },
+  {
+    _id: ObjectId("636c279d8e8bc155e5726864"),
+    nombre: 'Heladera',
+    descripcion: 'Heladera doble puerta marca Whirlpool',
+    stock: 8,
+    precio: 85000
+  }
+]
+empresa> db.productos.find().sort({precio:-1}).limit(1)
+[
+  {
+    _id: ObjectId("636c279d8e8bc155e5726864"),
+    nombre: 'Heladera',
+    descripcion: 'Heladera doble puerta marca Whirlpool',
+    stock: 8,
+    precio: 85000
+  }
+]
+empresa> db.clientes.find().sort({nombre: 1}).limit(2)
+[
+  {
+    _id: ObjectId("636c27958e8bc155e5726861"),
+    nombre: 'Angel',
+    apellido: 'Cabrera',
+    edad: 62,
+    telefono: 1132851698,
+    email: 'angelcabrera@gmail.com'
+  },
+  {
+    _id: ObjectId("636c27958e8bc155e572685e"),
+    nombre: 'Julian',
+    apellido: 'Perez',
+    edad: 37,
+    telefono: 1159543732,
+    email: 'julianperez@gmail.com'
+  }
+]
+empresa> db.productos.updateOne({nombre: 'Mesa'}, {$set: {precio: 13000}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+empresa> db.clientes.deleteOne({nombre: 'Julian'})
+{ acknowledged: true, deletedCount: 1 }
+empresa> db.productos.find({},{nombre:1, precio:1, _id:0}).sort({precio: 1})
+[
+  { nombre: 'Plato', precio: 1200 },
+  { nombre: 'Silla', precio: 8000 },
+  { nombre: 'Mesa', precio: 13000 },
+  { nombre: 'Heladera', precio: 85000 }
+]
+empresa> db.clientes.find({},{nombre:1, email:1, _id:0})
+[
+  { nombre: 'Sacha', email: 'sachabuengue@gmail.com' },
+  { nombre: 'Magali', email: 'magalielbaum@gmail.com' },
+  { nombre: 'Pedro', email: 'pedromorlivo@gmail.com' },
+  { nombre: 'Angel', email: 'angelcabrera@gmail.com' }
+]
+empresa>
